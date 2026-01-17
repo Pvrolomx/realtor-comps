@@ -1,0 +1,9 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import CompsApp from '../components/CompsApp';
+import '../styles/global.css';
+---
+
+<MainLayout title="Generar Comps">
+  <CompsApp client:load />
+</MainLayout>
