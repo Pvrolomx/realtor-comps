@@ -1,0 +1,63 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import '../styles/global.css';
+---
+
+<MainLayout title="Inicio">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-bold text-primary mb-6">
+        Genera Comps en <span class="text-accent">30 Segundos</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+        Análisis de comparables profesionales impulsado por IA para agentes inmobiliarios de Puerto Vallarta y Bahía de Banderas
+      </p>
+      <a href="/comps" class="inline-block bg-accent hover:bg-orange-600 text-white text-xl px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+        🚀 Empezar Ahora
+      </a>
+    </div>
+
+    <!-- Features -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="bg-white p-8 rounded-2xl shadow-md text-center">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-xl font-bold text-primary mb-2">Ultra Rápido</h3>
+        <p class="text-gray-600">Resultados en menos de 30 segundos vs. 1-2 horas manual</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-md text-center">
+        <div class="text-4xl mb-4">🧠</div>
+        <h3 class="text-xl font-bold text-primary mb-2">IA Inteligente</h3>
+        <p class="text-gray-600">Análisis ponderado por ubicación, tamaño y amenidades</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-md text-center">
+        <div class="text-4xl mb-4">🏠</div>
+        <h3 class="text-xl font-bold text-primary mb-2">Hyperlocal</h3>
+        <p class="text-gray-600">Especializado en Puerto Vallarta y Bahía de Banderas</p>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="bg-white rounded-2xl shadow-md p-8">
+      <h2 class="text-3xl font-bold text-center text-primary mb-8">¿Cómo Funciona?</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <p class="text-gray-700">Ingresa los datos de la propiedad</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <p class="text-gray-700">La IA analiza el inventario</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <p class="text-gray-700">Selecciona 5 mejores comps</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <p class="text-gray-700">Obtén valuación estimada</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
