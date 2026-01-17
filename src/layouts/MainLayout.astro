@@ -1,0 +1,81 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1E3A5F" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <title>{title} | RealtorComps</title>
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <nav class="bg-primary text-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold flex items-center gap-2">
+          <span class="text-accent">📊</span> RealtorComps
+        </a>
+        <div class="flex items-center gap-3">
+          <button id="installBtn" class="hidden bg-white text-primary hover:bg-gray-100 px-4 py-2 rounded-lg transition font-medium">
+            📲 Instalar App
+          </button>
+          <a href="/comps" class="bg-accent hover:bg-orange-600 px-4 py-2 rounded-lg transition">
+            Generar Comps
+          </a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer class="bg-primary text-white py-6 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center opacity-80">
+        Hecho con ❤️ por Colmena - 2026
+      </div>
+    </footer>
+    <script>
+      // Register Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(() => console.log('SW registered'))
+          .catch((err) => console.log('SW registration failed:', err));
+      }
+
+      // PWA Install Prompt
+      let deferredPrompt;
+      const installBtn = document.getElementById('installBtn');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBtn) installBtn.classList.remove('hidden');
+      });
+
+      if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('Install outcome:', outcome);
+            deferredPrompt = null;
+            installBtn.classList.add('hidden');
+          }
+        });
+      }
+
+      window.addEventListener('appinstalled', () => {
+        console.log('App installed');
+        if (installBtn) installBtn.classList.add('hidden');
+      });
+    </script>
+  </body>
+</html>
